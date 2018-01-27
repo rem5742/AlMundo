@@ -1,0 +1,12 @@
+{
+  "name": "Server",
+  "version": "1.0.0",
+  "description": "",
+  "author": "David J",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "firebase-admin": "^5.8.1",
+    "mongodb": "^3.0.1"
+  }
+}

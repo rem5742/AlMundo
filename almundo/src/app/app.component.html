@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="body">
+	<div class="sidebar" mode="side" opened="true">
+		<div class="main-sideNav">
+			<mat-toolbar color="primary">
+				<mat-toolbar-row>
+					<span >Filtros</span>
+					<div class="header-spacer"></div>
+					<button mat-icon-button (click)="search()">
+						<mat-icon svgIcon="almundo-search"></mat-icon>
+					</button>
+				</mat-toolbar-row>
+			</mat-toolbar>
+			<mat-accordion>
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							Nombre del hotel
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<mat-form-field>
+						<input matInput placeholder="Hotel" [(ngModel)]="fieldHotelName">
+					</mat-form-field>
+				</mat-expansion-panel>
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							Estrellas
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<!-- <mat-slider min="1" max="5" thumb-label="true"></mat-slider> -->
+					<div class="hotel-filter-slide-star">
+						<mat-icon class="star mat-icon {{fieldRangeStars==5?' selected':''}}" svgIcon="almundo-star" (click)="setFieldStars(5)"></mat-icon>
+						<mat-icon class="star mat-icon {{fieldRangeStars==4?' selected':''}}" svgIcon="almundo-star" (click)="setFieldStars(4)"></mat-icon>
+						<mat-icon class="star mat-icon {{fieldRangeStars==3?' selected':''}}" svgIcon="almundo-star" (click)="setFieldStars(3)"></mat-icon>
+						<mat-icon class="star mat-icon {{fieldRangeStars==2?' selected':''}}" svgIcon="almundo-star" (click)="setFieldStars(2)"></mat-icon>
+						<mat-icon class="star mat-icon {{fieldRangeStars==1?' selected':''}}" svgIcon="almundo-star" (click)="setFieldStars(1)"></mat-icon>
+					</div>
+				</mat-expansion-panel>
+				<mat-expansion-panel>
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							Precio
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<mat-form-field class="hotel-filter-price">
+						<input [(ngModel)]="fieldPriceMin" matInput placeholder="Min.">
+					</mat-form-field>
+					<mat-form-field class="hotel-filter-price">
+						<input [(ngModel)]="fieldPriceMax" matInput placeholder="Max." max="9">
+					</mat-form-field>
+				</mat-expansion-panel>
+			</mat-accordion>
+		</div>
+	</div>
+	<div class="content">
+		<div class="main-content {{searching?'searching':''}}">
+			<div class="result-card" *ngFor="let hotel of hotels">
+				<mat-card class="card-container">
+					<mat-card-content>
+						<div class="card-list" cols="3" rowHeight="2:1">
+							<div class="card-list-tile image">
+								<img src="assets/images/hotels/{{hotel.image}}" />
+							</div>
+							<div class="card-list-tile">
+								<div class="hotel-card-center">
+									<div class="hotel-card-title">
+										<span>{{hotel.name}}</span>
+									</div>
+									<div class="hotel-card-star">
+										<span *ngFor="let i of Arr(hotel.stars).fill(1)">
+											<mat-icon svgIcon="almundo-star"></mat-icon>
+										</span>
+									</div>
+									<div>
+										<span *ngFor="let ameniti of hotel.amenities">
+											<mat-icon svgIcon="almundo-{{ameniti}}"></mat-icon>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="card-list-tile footer">
+								<div align="center">
+									<div>Precio por noche por habitación</div>
+									<div class="hotel-card-price">
+										ARS
+										<span class="number">{{hotel.price}}</span>
+									</div>
+									<div>
+										<button color="primary" mat-raised-button>Ver hotel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
