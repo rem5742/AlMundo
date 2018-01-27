@@ -1,9 +1,9 @@
 # Prueba técnica para Almundo
 Esta es una prueba técnica para la oferta Front-End de la empresa Almundo.
 
-### Prerequisites
+### Prerequisitos
 
-Para ejecutar la aplicación se necesita tener una versión mayor a Nodejs 6.0.0
+Para ejecutar la aplicación se necesita tener una versión mayor a Nodejs 6.0.0.
 
 Tener en mongodb con base de datos llamada "almundo" con una colección llamada "hotels".
 
@@ -24,8 +24,14 @@ Ejecutar el siguiente en dos diferentes terminales en la carpeta "almundo" y "se
 npm install
 ```
 
+Luego para activar el servidor se ejecuta la sentencia
+```
+ng serve
+```
+
 ### Para tener en cuenta
 
 - La Base de Datos no tiene usuario ni contraseña
 - El puerto configurado para mongodb es el 27017
 - El puerto configurado para el servidor del API es el 3000
+- Para ejecutar la base de datos de mongodb hay en entrar a la ruta de los binarios donde fue instalado el programa y ejecutar el programa mongod.exe

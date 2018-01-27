@@ -16,12 +16,13 @@ export class AppComponent {
 	// hotels: IHotel[];
 	Arr = Array;
 	hotels: any;
+	hotelService: any;
 	fieldHotelName: string;
 	fieldRangeStars: number;
 	fieldPriceMin: number;
 	fieldPriceMax: number;
 
-	searching: bool = true;
+	searching = true;
 
 	setFieldStars(num) {
 		this.fieldRangeStars = num;
@@ -31,7 +32,7 @@ export class AppComponent {
 			name: this.fieldHotelName || '',
 			stars: this.fieldRangeStars || '',
 			// price: '{$gt: '+this.fieldPriceMin+'}'
-			priceMin: this.fieldPriceMin || ''
+			priceMin: this.fieldPriceMin || '',
 			priceMax: this.fieldPriceMax || ''
 		}
 		this.searching = true;
@@ -43,7 +44,7 @@ export class AppComponent {
 	}
 	constructor (hotelService: HotelService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
 		this.hotelService = hotelService;
-		hotelService.getHotels().subscribe(hotels=>{
+		hotelService.getHotels({}).subscribe(hotels=>{
 			this.hotels = hotels;
 			this.searching = false;
 		});
